@@ -1,0 +1,10 @@
+../Core/Src/flash_if.c:7:22:check_range	16	static
+../Core/Src/flash_if.c:19:13:sync_flash_caches	24	static,ignoring_inline_asm
+../Core/Src/flash_if.c:36:22:begin_flash	8	static
+../Core/Src/flash_if.c:48:22:finish_flash	16	static
+../Core/Src/flash_if.c:58:15:Flash_AppIsErased	32	static
+../Core/Src/flash_if.c:69:15:Flash_AppVerify	40	static
+../Core/Src/flash_if.c:81:15:Flash_AppErase	48	static
+../Core/Src/flash_if.c:112:15:Flash_AppWrite	56	static
+../Core/Src/flash_if.c:152:10:Flash_LastHalError	4	static
+../Core/Src/flash_if.c:154:13:Flash_StatusName	16	static

@@ -1,0 +1,11 @@
+../Core/Src/protocol.c:4:17:get16	1
+../Core/Src/protocol.c:6:17:get32	1
+../Core/Src/protocol.c:11:13:put16	1
+../Core/Src/protocol.c:13:13:put32	1
+../Core/Src/protocol.c:19:10:Protocol_Crc32	4
+../Core/Src/protocol.c:30:6:Protocol_Init	1
+../Core/Src/protocol.c:32:6:Protocol_Expire	3
+../Core/Src/protocol.c:43:13:discard	1
+../Core/Src/protocol.c:49:13:parse_buffer	12
+../Core/Src/protocol.c:86:6:Protocol_Feed	5
+../Core/Src/protocol.c:103:8:Protocol_Encode	6
