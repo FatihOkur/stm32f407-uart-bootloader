@@ -43,7 +43,7 @@ class ResponseReader:
         return frames
 
 
-def request_info(port, sequence=1, timeout=0.5, retries=3):
+def request_info(port, sequence=1, timeout=30.0, retries=3):
     packet = encode(Frame(Command.GET_INFO, sequence))
     reader = ResponseReader()
     for attempt in range(retries + 1):

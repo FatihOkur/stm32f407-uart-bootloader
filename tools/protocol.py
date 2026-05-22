@@ -18,6 +18,7 @@ class Command(IntEnum):
     GET_STATUS = 5
     ABORT = 6
     REBOOT = 7
+    GET_DIAGNOSTICS = 8
 
 
 @dataclass(frozen=True)

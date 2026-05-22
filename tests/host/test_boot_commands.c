@@ -10,7 +10,7 @@ int main(void)
     req.command=CMD_GET_INFO; req.sequence=1;
     BootCommands_Handle(&state,&req,1,&reply);
     assert(reply.command==0x81 && reply.sequence==1 && reply.length==22);
-    const unsigned char expected[]={0,1,0,7,4,0,0,1,0,0,0,0,0,2,8,0,0,14,0,0,1,1};
+    const unsigned char expected[]={0,1,0,7,4,0,0,4,0,0,0,0,0,2,8,0,0,14,0,0,1,1};
     assert(memcmp(reply.payload,expected,sizeof(expected))==0);
     first=reply;
     BootCommands_Handle(&state,&req,0,&reply);
@@ -25,6 +25,7 @@ int main(void)
     BootCommands_Handle(&state,&req,1,&reply);
     assert(reply.payload[0]==PROTO_STATUS_BAD_PAYLOAD && state.next_sequence==3);
     for (unsigned cmd=2;cmd<=7;cmd++) {
+        if(cmd==CMD_BEGIN_UPDATE || cmd==CMD_WRITE_CHUNK || cmd==CMD_GET_STATUS || cmd==CMD_END_UPDATE) continue;
         req.sequence=state.next_sequence; req.command=(uint8_t)cmd; req.length=0;
         BootCommands_Handle(&state,&req,1,&reply);
         assert(reply.length==1 && reply.payload[0]==PROTO_STATUS_BAD_COMMAND);

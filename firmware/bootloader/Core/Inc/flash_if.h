@@ -6,6 +6,9 @@
 #define FLASH_APP_BASE        0x08020000UL
 #define FLASH_APP_SIZE        0x000E0000UL
 #define FLASH_APP_SECTOR_SIZE 0x00020000UL
+#define FLASH_META_BASE       0x08010000UL
+#define FLASH_META_SIZE       0x00010000UL
+#define FLASH_META_RECORD_SIZE 40U
 
 typedef enum {
     FLASH_IF_OK = 0,
@@ -31,6 +34,9 @@ FlashIfStatus Flash_AppErase(uint32_t offset, uint32_t length);
 FlashIfStatus Flash_AppWrite(uint32_t offset, const uint8_t *data, uint32_t length);
 FlashIfStatus Flash_AppVerify(uint32_t offset, const uint8_t *data, uint32_t length);
 FlashIfStatus Flash_AppIsErased(uint32_t offset, uint32_t length);
+/* Dedicated sector-4 API; cannot address boot/app regions. Word writes only. */
+FlashIfStatus Flash_MetadataErase(void);
+FlashIfStatus Flash_MetadataWrite(uint32_t offset, const uint8_t *data, uint32_t length);
 uint32_t Flash_LastHalError(void);
 const char *Flash_StatusName(FlashIfStatus status);
 

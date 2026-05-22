@@ -1,9 +1,10 @@
 # UART bootloader protocol v1
 
-Status (step 8): framing, C parser, binary USART2 transport, GET_INFO dispatcher,
-one-response sequence cache and Python serial client implemented. Native tests pass;
-physical UART GET_INFO verification is pending. Firmware update commands/state machine
-are not implemented. Bootloader version: 0.1.0.
+Status (step 13): bootloader 0.4.0 enables verified application boot after reset.
+Stages 10-14 hardware tests passed within documented scope (power cut between acknowledged chunks, not during flash busy). Step 15 timing tool is ready; measurements pending.
+USER forces bootloader mode. Without USER, metadata and full image CRC/vector validation
+must pass before handoff. ABORT and REBOOT protocol commands remain unimplemented.
+See step12-commit.md for metadata and step13-verified-boot.md for boot behavior and tests.
 
 ## Transport and packet layout
 
@@ -38,7 +39,7 @@ CRC detects corruption; it does not authenticate commands or firmware.
 
 ## Commands and payload contracts
 
-GET_INFO is implemented. Other commands remain reserved contracts; they currently
+GET_INFO, BEGIN_UPDATE, WRITE_CHUNK, END_UPDATE, GET_STATUS and GET_DIAGNOSTICS are implemented. Other commands currently
 return BAD_COMMAND without flash operations.
 Target ID for this project: 04070001 hex (a project constant, not STM32 DBGMCU device ID).
 Semantic version = three uint16 values: major, minor, patch.
@@ -52,9 +53,10 @@ Semantic version = three uint16 values: major, minor, patch.
 | 05 | GET_STATUS | Empty |
 | 06 | ABORT | Empty |
 | 07 | REBOOT | Empty |
+| 08 | GET_DIAGNOSTICS | Empty |
 
 BEGIN_UPDATE rejects wrong target, zero/oversized images and nonzero reserved fields
-before erasing. A later update layer must invalidate persistent metadata before
+before erasing. BEGIN erases and verifies metadata sector 4 before
 erasing application sectors. Protocol framing by itself never erases flash.
 WRITE_CHUNK offset is image-relative, must equal the expected next byte offset,
 and must be word aligned. A non-final chunk length must be a multiple of four;
@@ -73,9 +75,10 @@ On success, command-specific payloads after the status are:
 | GET_STATUS / 85 | update_state u8; received_size u32; declared_size u32; last_hal_error u32 |
 | ABORT / 86 | None |
 | REBOOT / 87 | None; transmit complete response before resetting |
+| GET_DIAGNOSTICS / 88 | erase_calls u32; write_calls u32; cache_hits u32; sequence_rejects u32 |
 
 app_validation: 0=no usable vectors, 1=vectors sane only, 2=metadata+CRC verified.
-Step 8 must not report state 2 before image validation is implemented.
+Step 12 reports 2 only after fresh metadata and full-image CRC/vector validation.
 update_state: 0=IDLE, 1=PREPARING, 2=RECEIVING, 3=VERIFYING, 4=COMMITTED, 5=ERROR.
 ABORT ends an active transfer and leaves its partial image invalid. With no active
 transfer it must not erase/invalidate an existing committed image.
@@ -110,7 +113,7 @@ serial stream buffering, resynchronization and 100 ms partial-response expiry. C
 
 ## Sequence, retries and side effects
 
-The sequence cache and GET_INFO retries are implemented. Update/reboot behavior below
+Sequence caching covers END commit as well. Reboot/ABORT behavior below
 remains a contract for later steps.
 
 - After board reset, host starts sequence 1; subsequent new requests increment modulo
@@ -125,7 +128,7 @@ remains a contract for later steps.
 - Identical BEGIN_UPDATE retries must never trigger another erase. While a long operation
   is in progress the host waits; final response is cached when it completes.
 - Host initial timeout budget: 500 ms ordinary commands, 45 s BEGIN_UPDATE,
-  5 s END_UPDATE; at most three retransmissions of an identical request.
+  30 s END_UPDATE and GET_INFO; at most three retransmissions of an identical request.
   These are initial budgets to validate by board measurements, not timing guarantees.
 - On retry exhaustion, stop and report uncertain outcome. Do not silently begin erasing
   again. Reset/reconnect and explicitly restart the image transfer when appropriate.
@@ -137,7 +140,7 @@ remains a contract for later steps.
 main.c now uses exclusive binary bootloader mode. Plain boot logs and the `t`
 diagnostic entry point are removed; flash self-test source remains available.
 USER held at the 750 ms check keeps the bootloader active until reset. Without USER,
-sane application vectors still cause automatic handoff.
+automatic handoff requires valid committed metadata and full-image CRC/vector checks (step 13).
 USART SR/DR are polled in the main loop; RX errors discard the partial parser state.
 HAL configures USART and transmits responses. No RX IRQ/DMA is used. Idle parser
 expiry runs continuously. The host must use stop-and-wait, never pipeline requests
@@ -175,7 +178,7 @@ python tests/host/test_protocol.py
   split responses, noise/bad CRC/oversized length, timeout recovery, wrong command or
   sequence, malformed reply lengths, identical retry, error status and exhaustion.
 - ARM Debug build passed; vector table remains 08000000; flash footprint 12972 bytes.
-- On-board GET_INFO test: pending user programming/reset/run. Native fake-port tests
+- On-board GET_INFO and reset-to-application tests: PASS (user logs). Native fake-port tests
   do not establish electrical UART performance.
 
 Client dependency: tools/requirements.txt (pyserial 3.5). No dependency is needed

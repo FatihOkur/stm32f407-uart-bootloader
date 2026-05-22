@@ -149,6 +149,52 @@ FlashIfStatus Flash_AppWrite(uint32_t offset, const uint8_t *data, uint32_t leng
     return FLASH_IF_OK;
 }
 
+FlashIfStatus Flash_MetadataErase(void)
+{
+    last_hal_error=0U;
+    FLASH_EraseInitTypeDef erase={0};
+    erase.TypeErase=FLASH_TYPEERASE_SECTORS;
+    erase.Sector=FLASH_SECTOR_4;
+    erase.NbSectors=1U;
+    erase.VoltageRange=FLASH_VOLTAGE_RANGE_3;
+    uint32_t failed=0xFFFFFFFFUL;
+    FlashIfStatus status=begin_flash();
+    if(status!=FLASH_IF_OK) return status;
+    if(HAL_FLASHEx_Erase(&erase,&failed)!=HAL_OK || failed!=0xFFFFFFFFUL) {
+        last_hal_error=HAL_FLASH_GetError(); status=FLASH_IF_HAL_ERROR;
+    }
+    status=finish_flash(status);
+    if(status!=FLASH_IF_OK) return status;
+    const volatile uint8_t *p=(const volatile uint8_t *)FLASH_META_BASE;
+    for(uint32_t i=0;i<FLASH_META_SIZE;i++)
+        if(p[i]!=0xFFU) return FLASH_IF_VERIFY_ERROR;
+    return FLASH_IF_OK;
+}
+
+FlashIfStatus Flash_MetadataWrite(uint32_t offset,const uint8_t *data,uint32_t length)
+{
+    last_hal_error=0U;
+    if(data==NULL || length==0U) return FLASH_IF_ARGUMENT;
+    if(offset>=FLASH_META_RECORD_SIZE || length>FLASH_META_RECORD_SIZE-offset)
+        return FLASH_IF_RANGE;
+    if((offset&3U)!=0U || (length&3U)!=0U) return FLASH_IF_ALIGNMENT;
+    const volatile uint8_t *p=(const volatile uint8_t *)(FLASH_META_BASE+offset);
+    for(uint32_t i=0;i<length;i++) if(p[i]!=0xFFU) return FLASH_IF_NOT_ERASED;
+    FlashIfStatus status=begin_flash();
+    if(status!=FLASH_IF_OK) return status;
+    for(uint32_t i=0;i<length;i+=4U) {
+        uint32_t word;
+        memcpy(&word,data+i,4U);
+        if(HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD,FLASH_META_BASE+offset+i,word)!=HAL_OK) {
+            last_hal_error=HAL_FLASH_GetError(); status=FLASH_IF_HAL_ERROR; break;
+        }
+    }
+    status=finish_flash(status);
+    if(status!=FLASH_IF_OK) return status;
+    for(uint32_t i=0;i<length;i++) if(p[i]!=data[i]) return FLASH_IF_VERIFY_ERROR;
+    return FLASH_IF_OK;
+}
+
 uint32_t Flash_LastHalError(void) { return last_hal_error; }
 
 const char *Flash_StatusName(FlashIfStatus status)

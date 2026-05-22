@@ -1,3 +1,4 @@
+"./Core/Src/boot_commands.o"
 "./Core/Src/flash_if.o"
 "./Core/Src/flash_selftest.o"
 "./Core/Src/main.o"

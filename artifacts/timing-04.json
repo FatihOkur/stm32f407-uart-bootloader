@@ -1,0 +1,601 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-24T16:19:28.215479+00:00",
+  "result": "committed",
+  "error": null,
+  "environment": {
+    "python": "3.14.3",
+    "os": "Windows-11-10.0.26200-SP0",
+    "baud": 115200,
+    "framing": "8N1",
+    "max_chunk_bytes": 256,
+    "port": "COM8",
+    "package_file": "C:\\Users\\Fatih\\Documents\\EmbeddedProjects\\stm32f407-uart-bootloader\\artifacts\\demo_app-1.0.0.fwp",
+    "image_size": 11812,
+    "image_crc32": "0xA90E29E5",
+    "firmware_version": "1.0.0",
+    "commit_requested": true,
+    "fault_injection": false,
+    "bootloader_version": "0.4.0",
+    "initial_validation": 2
+  },
+  "measurement_scope": "Host perf_counter_ns; includes USB/OS scheduling, Python, wire time and device work. Not MCU execution time.",
+  "total_seconds": 4.310532,
+  "data_transfer_seconds": 1.5814011,
+  "data_goodput_bytes_per_second": 7469.325776996108,
+  "whole_update_goodput_bytes_per_second": 2740.2650067323475,
+  "command_count": 54,
+  "retry_count": 0,
+  "write_transactions_ms": {
+    "count": 47,
+    "min_ms": 8.4299,
+    "mean_ms": 33.61852765957447,
+    "median_ms": 34.1293,
+    "p95_ms": 34.3643,
+    "max_ms": 34.5844
+  },
+  "write_transactions_without_retry_ms": {
+    "count": 47,
+    "min_ms": 8.4299,
+    "mean_ms": 33.61852765957447,
+    "median_ms": 34.1293,
+    "p95_ms": 34.3643,
+    "max_ms": 34.5844
+  },
+  "full_chunk_transactions_without_retry_ms": {
+    "count": 46,
+    "min_ms": 33.944,
+    "mean_ms": 34.16610652173913,
+    "median_ms": 34.14495,
+    "p95_ms": 34.3643,
+    "max_ms": 34.5844
+  },
+  "ideal_data_phase": {
+    "chunks": 47,
+    "request_plus_ack_bytes": 13363,
+    "wire_only_seconds_no_retries": 1.159982638888889,
+    "uart_bytes_per_second_8n1": 11520
+  },
+  "commands": [
+    {
+      "command": 1,
+      "sequence": 1,
+      "request_payload_bytes": 0,
+      "elapsed_ms": 227.1307,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 5,
+      "sequence": 2,
+      "request_payload_bytes": 0,
+      "elapsed_ms": 4.8028,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 2,
+      "sequence": 3,
+      "request_payload_bytes": 20,
+      "elapsed_ms": 1812.5475,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 4,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 33.944,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 5,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0735,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 6,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0834,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 7,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1624,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 8,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1882,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 9,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.3855,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 10,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1679,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 11,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.124,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 12,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0965,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 13,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0068,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 14,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0442,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 15,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 33.9917,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 16,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1266,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 17,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1061,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 18,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.2351,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 19,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.09,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 20,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.5844,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 21,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.3211,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 22,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.252,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 23,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0276,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 24,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0508,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 25,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1606,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 26,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.3014,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 27,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.3125,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 28,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.3332,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 29,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1237,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 30,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.3643,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 31,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1118,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 32,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0847,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 33,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1844,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 34,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1274,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 35,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.2662,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 36,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.2814,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 37,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0775,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 38,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1697,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 39,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1276,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 40,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0682,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 41,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.2056,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 42,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0831,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 43,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.0938,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 44,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1941,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 45,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.2163,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 46,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.2016,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 47,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1639,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 48,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1968,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 49,
+      "request_payload_bytes": 260,
+      "elapsed_ms": 34.1293,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 3,
+      "sequence": 50,
+      "request_payload_bytes": 40,
+      "elapsed_ms": 8.4299,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 5,
+      "sequence": 51,
+      "request_payload_bytes": 0,
+      "elapsed_ms": 4.6895,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 4,
+      "sequence": 52,
+      "request_payload_bytes": 0,
+      "elapsed_ms": 446.9331,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 5,
+      "sequence": 53,
+      "request_payload_bytes": 0,
+      "elapsed_ms": 4.5598,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    },
+    {
+      "command": 1,
+      "sequence": 54,
+      "request_payload_bytes": 0,
+      "elapsed_ms": 226.823,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "ok",
+      "status": 0
+    }
+  ]
+}

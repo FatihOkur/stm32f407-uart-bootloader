@@ -19,6 +19,7 @@ extern uint32_t mock_primask;
 #define FLASH_FLAG_PGSERR 32U
 #define FLASH_TYPEERASE_SECTORS 0U
 #define FLASH_SECTOR_5 5U
+#define FLASH_SECTOR_4 4U
 #define FLASH_VOLTAGE_RANGE_3 2U
 #define FLASH_TYPEPROGRAM_WORD 2U
 #define __get_PRIMASK() mock_primask

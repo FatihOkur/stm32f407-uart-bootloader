@@ -1,4 +1,8 @@
-../Core/Src/boot_commands.c:5:13:put16	16	static
-../Core/Src/boot_commands.c:7:13:put32	16	static
-../Core/Src/boot_commands.c:10:6:BootCommands_Init	16	static
-../Core/Src/boot_commands.c:16:6:BootCommands_Handle	32	static
+../Core/Src/boot_commands.c:6:13:put16	16	static
+../Core/Src/boot_commands.c:8:13:put32	16	static
+../Core/Src/boot_commands.c:10:17:get16	16	static
+../Core/Src/boot_commands.c:12:17:get32	24	static
+../Core/Src/boot_commands.c:15:13:flash_failed	16	static
+../Core/Src/boot_commands.c:22:13:execute	48	static
+../Core/Src/boot_commands.c:101:6:BootCommands_Init	16	static
+../Core/Src/boot_commands.c:107:6:BootCommands_Handle	32	static

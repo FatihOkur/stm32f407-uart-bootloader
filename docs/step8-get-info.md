@@ -56,4 +56,4 @@ Core/Src/boot_commands.c is included by the generated makefiles. The agent built
 this ELF with the existing make pattern and explicitly linked that extra object;
 generated makefiles were not edited.
 
-Hardware GET_INFO result is pending. Do not proceed to step 9 until it passes.
+Hardware GET_INFO and reset-to-application passed, confirmed by user logs on 2026-09-24. Step 8 is complete.

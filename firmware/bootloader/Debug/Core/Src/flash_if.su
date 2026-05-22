@@ -6,5 +6,7 @@
 ../Core/Src/flash_if.c:69:15:Flash_AppVerify	40	static
 ../Core/Src/flash_if.c:81:15:Flash_AppErase	48	static
 ../Core/Src/flash_if.c:112:15:Flash_AppWrite	56	static
-../Core/Src/flash_if.c:152:10:Flash_LastHalError	4	static
-../Core/Src/flash_if.c:154:13:Flash_StatusName	16	static
+../Core/Src/flash_if.c:152:15:Flash_MetadataErase	48	static
+../Core/Src/flash_if.c:174:15:Flash_MetadataWrite	56	static
+../Core/Src/flash_if.c:198:10:Flash_LastHalError	4	static
+../Core/Src/flash_if.c:200:13:Flash_StatusName	16	static

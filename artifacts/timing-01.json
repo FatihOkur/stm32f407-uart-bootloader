@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-24T16:14:59.579497+00:00",
+  "result": "failed",
+  "error": "KeyboardInterrupt: ",
+  "environment": {
+    "python": "3.14.3",
+    "os": "Windows-11-10.0.26200-SP0",
+    "baud": 115200,
+    "framing": "8N1",
+    "max_chunk_bytes": 256,
+    "port": "COM8",
+    "package_file": "C:\\Users\\Fatih\\Documents\\EmbeddedProjects\\stm32f407-uart-bootloader\\artifacts\\demo_app-1.0.0.fwp",
+    "image_size": 11812,
+    "image_crc32": "0xA90E29E5",
+    "firmware_version": "1.0.0",
+    "commit_requested": true,
+    "fault_injection": false
+  },
+  "measurement_scope": "Host perf_counter_ns; includes USB/OS scheduling, Python, wire time and device work. Not MCU execution time.",
+  "total_seconds": 10.8418059,
+  "data_transfer_seconds": null,
+  "data_goodput_bytes_per_second": null,
+  "whole_update_goodput_bytes_per_second": null,
+  "command_count": 1,
+  "retry_count": 0,
+  "write_transactions_ms": null,
+  "write_transactions_without_retry_ms": null,
+  "full_chunk_transactions_without_retry_ms": null,
+  "ideal_data_phase": {
+    "chunks": 47,
+    "request_plus_ack_bytes": 13363,
+    "wire_only_seconds_no_retries": 1.159982638888889,
+    "uart_bytes_per_second_8n1": 11520
+  },
+  "commands": [
+    {
+      "command": 1,
+      "sequence": 1,
+      "request_payload_bytes": 0,
+      "elapsed_ms": 10841.0699,
+      "attempts": 1,
+      "retries": 0,
+      "outcome": "error",
+      "status": null
+    }
+  ]
+}

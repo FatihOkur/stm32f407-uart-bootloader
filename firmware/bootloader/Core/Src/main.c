@@ -25,6 +25,7 @@
 #include "flash_if.h"
 #include "protocol.h"
 #include "boot_commands.h"
+#include "image_store.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,7 +65,7 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/* Until metadata/CRC is implemented: vector sanity checks only. */
+/* GET_INFO diagnostic level 1 only; this check never authorizes a jump. */
 static uint32_t Boot_AppVectorsSane(uint32_t msp, uint32_t reset_vector)
 {
   uint32_t entry = reset_vector & ~1UL;
@@ -197,13 +198,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
   HAL_Delay(750U);
-  if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) != GPIO_PIN_SET)
-  {
-    uint32_t app_msp = *(const volatile uint32_t *)APP_BASE_ADDRESS;
-    uint32_t app_reset = *(const volatile uint32_t *)(APP_BASE_ADDRESS + 4UL);
-    if (Boot_AppVectorsSane(app_msp, app_reset) != 0U)
-      Boot_JumpToApp(app_msp, app_reset);
-  }
+  /* Sample USER before the potentially longer full-image CRC calculation. */
+  uint8_t force_bootloader = (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET);
+  uint32_t app_msp, app_reset;
+  if (Image_GetBootVectors(force_bootloader, &app_msp, &app_reset) != 0U)
+    Boot_JumpToApp(app_msp, app_reset);
   /* Bootloader UART is binary-only. USER button keeps us here until reset. */
   Protocol_Init(&boot_parser);
   BootCommands_Init(&boot_commands);
