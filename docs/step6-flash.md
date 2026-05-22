@@ -43,6 +43,6 @@ Never add the mock HAL directory to firmware include paths. Host test executable
 
 ## Validation status
 
-- Host regression: PASS on 2026-09-24 (MinGW, actual flash_if.c compiled).
-- STM32 Debug build: PASS on 2026-09-24; flash footprint about 19 KiB, within 64 KiB. New modules are linked into bootloader.elf. Refresh the project in CubeIDE to discover the new source files before the next IDE build.
-- Board erase/program/readback: PASS on 2026-09-24. User supplied all 19 PASS lines and ALL PASS; reset then returned to APP 1.0.0 UART output. Initial scratch-sector blank check had correctly aborted on four zero bytes at 0x080FFFFC. After a full backup and ELF comparison, sector 11 was erased; full readback showed exactly those four bytes changed, and every byte outside sector 11 unchanged.
+- Host regression: PASS (MinGW, actual flash_if.c compiled).
+- STM32 Debug build: PASS; flash footprint about 19 KiB, within 64 KiB. New modules are linked into bootloader.elf. Refresh the project in CubeIDE to discover the new source files before the next IDE build.
+- Board erase/program/readback: PASS. User supplied all 19 PASS lines and ALL PASS; reset then returned to APP 1.0.0 UART output. Initial scratch-sector blank check had correctly aborted on four zero bytes at 0x080FFFFC. After a full backup and ELF comparison, sector 11 was erased; full readback showed exactly those four bytes changed, and every byte outside sector 11 unchanged.

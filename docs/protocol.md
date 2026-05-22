@@ -148,7 +148,7 @@ while a blocking response is being sent. App text remains a separate mode.
 
 ## Validation
 
-2026-09-24: native C tests compiled with -O2 -Wall -Wextra -Werror passed.
+Native C tests compiled with -O2 -Wall -Wextra -Werror passed.
 Python unittest: 8 test methods passed, including:
 - 275 CRC vectors compared between C and Python binascii.
 - 261 frame sizes (payload 0..260) roundtripped Python -> C parser/encoder -> Python.
@@ -169,7 +169,7 @@ gcc -std=c11 -O2 -Wall -Wextra -Werror -I firmware/bootloader/Core/Inc tests/hos
 python tests/host/test_protocol.py
 ```
 
-## Step 8 validation (2026-09-24)
+## Step 8 validation
 
 - Native boot_commands.c test: exact 22-byte info payload, duplicate cached response,
   changed duplicate/unexpected sequence rejection, malformed payload, unsupported

@@ -55,10 +55,11 @@ The output directory must already exist.
 
 ## Reproduce in PowerShell
 
-Build demo_app in CubeIDE first; then run from repository root:
+Build demo_app in CubeIDE first. Add CubeIDE's GNU Arm toolchain bin directory
+to PATH, then run from repository root:
 
 ```powershell
-$objcopy = 'C:\ST\STM32CubeIDE_1.19.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344\tools\bin\arm-none-eabi-objcopy.exe'
+$objcopy = (Get-Command arm-none-eabi-objcopy -ErrorAction Stop).Source
 & $objcopy -O binary --gap-fill 0xFF firmware/demo_app/Debug/demo_app.elf firmware/demo_app/Debug/demo_app.bin
 if ($LASTEXITCODE -ne 0) { throw 'objcopy failed' }
 New-Item -ItemType Directory -Force artifacts | Out-Null
@@ -74,7 +75,7 @@ The already created package can be checked without regenerating anything:
 py tools/fwpackage.py inspect artifacts/demo_app-1.0.0.fwp
 ```
 
-## Results, 2026-09-24
+## Results
 
 - Application build checked; vector table remains 0x08020000.
 - Real image: 11812 bytes, CRC32 A90E29E5. Package: 11848 bytes, version 1.0.0.

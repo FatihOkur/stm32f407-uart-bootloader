@@ -93,7 +93,7 @@ An old 0.1.0 bootloader is detected before BEGIN and rejected. No updates to .io
 CubeIDE version are required. Future IDE builds: refresh project (F5) so the added
 boot_commands.c participates; the agent-built ELF already includes it explicitly.
 
-## Validation, 2026-09-24
+## Validation
 
 - ARM Debug build passed; vector address 08000000, flash footprint 15116 bytes.
 - Native GET_INFO/sequence regression passed with strict GCC warnings.

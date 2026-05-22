@@ -65,7 +65,8 @@ Normal transfer/commit output is followed by MEASURE lines for BEGIN, END, data
 seconds, data goodput B/s, WRITE min/mean/p95/max and total seconds/retry count.
 Choose an unused report filename; timing-01.json already exists in the recorded
 test artifacts. Report JSON retains the image CRC/version, bootloader version, baud,
-port, host OS/Python and UTC report creation time for reproducibility.
+port and host OS/Python for reproducibility. The checked-in reports omit their
+calendar timestamps; newly generated reports may include them.
 
 The tool rewrites the same application with a normal verified commit. It does not
 restart the board. Repeating a baseline requires a fresh USER+RESET session and a
